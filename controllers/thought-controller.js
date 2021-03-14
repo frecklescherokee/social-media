@@ -21,24 +21,6 @@ const thoughtController = {
     })
     .catch(err => res.json(err));
   },
-
-  /////////////////////////
-  
-//   postNewReaction({ params, body }, res) {
-//     Thought.findOneAndUpdate(
-//         { _id: params.commentId },
-//         { $push: { reactions: body } },
-//         { new: true, runValidators: true }
-//     )
-//     .then(dbUserData => {
-//         if (!dbUserData) {
-//         res.status(404).json({ message: 'No thought found with this id!' });
-//         return;
-//         }
-//         res.json(dbUserData);
-//     })
-//     .catch(err => res.json(err));
-// },
   
   postNewReaction({ params, body }, res) {
     Thought.findOneAndUpdate(
@@ -57,7 +39,7 @@ const thoughtController = {
       })
       .catch((err) => res.json(err));
   },
- ////////////////////////////
+
   // read all thoughts from database
   getAllThoughts(req, res) {
     Thought.find({})
