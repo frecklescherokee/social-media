@@ -1,16 +1,45 @@
 const { Thought, User } = require("../models");
 
 const thoughtController = {
-  // C
-  // create new thought
-  postNewThought({ body }, res) {
+ 
+  postNewThought({ params, body }, res) {
+    console.log(body);
     Thought.create(body)
-      .then((dbUserData) => res.json(dbUserData))
-      .catch((err) => {
-        console.log(err);
-        res.status(400).json(err);
-      });
+    .then(({ _id }) => {
+        return User.findOneAndUpdate(
+        { username: body.username },
+        { $push: { thoughts: _id } },
+        { new: true }
+        );
+    })
+    .then(dbUserData => {
+        if (!dbUserData) {
+        res.status(404).json({ message: 'No user found with this id!' });
+        return;
+        }
+        res.json(dbPizzaData);
+    })
+    .catch(err => res.json(err));
   },
+
+  /////////////////////////
+  
+//   postNewReaction({ params, body }, res) {
+//     Thought.findOneAndUpdate(
+//         { _id: params.commentId },
+//         { $push: { reactions: body } },
+//         { new: true, runValidators: true }
+//     )
+//     .then(dbUserData => {
+//         if (!dbUserData) {
+//         res.status(404).json({ message: 'No thought found with this id!' });
+//         return;
+//         }
+//         res.json(dbUserData);
+//     })
+//     .catch(err => res.json(err));
+// },
+  
   postNewReaction({ params, body }, res) {
     Thought.findOneAndUpdate(
       { _id: params.id },
@@ -21,14 +50,14 @@ const thoughtController = {
         if (!dbUserData) {
           res
             .status(404)
-            .json({ message: "No thought found with specified ID!" });
+            .json({ message: "The specified Thought ID does not exist!" });
           return;
         }
         res.json(dbUserData);
       })
       .catch((err) => res.json(err));
   },
-  // R
+ ////////////////////////////
   // read all thoughts from database
   getAllThoughts(req, res) {
     Thought.find({})

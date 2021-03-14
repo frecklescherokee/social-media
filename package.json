@@ -1,23 +1,23 @@
 {
-  "name": "Social-Media-Backend",
+  "name": "social-media",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CaseyDeriso/Social-Media-Backend.git"
+    "url": "git+https://github.com/frecklescherokee/social-media.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CaseyDeriso/Social-Media-Backend/issues"
+    "url": "https://github.com/frecklescherokee/social-media/issues"
   },
-  "homepage": "https://github.com/CaseyDeriso/Social-Media-Backend#readme",
+  "homepage": "https://github.com/frecklescherokee/social-media#readme",
   "dependencies": {
     "express": "^4.17.1",
     "moment": "^2.29.1",

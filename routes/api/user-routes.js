@@ -1,4 +1,7 @@
 const router = require("express").Router();
+
+
+// import controllers fromuser-controller
 const {
   getAllUsers,
   postNewUser,
@@ -9,8 +12,10 @@ const {
   deleteFriendById,
 } = require("../../controllers/user-controller");
 
+
 // api/users/
 router.route("/").get(getAllUsers).post(postNewUser);
+
 
 // api/users/:id
 router
@@ -19,7 +24,8 @@ router
   .put(updateUserById)
   .delete(deleteUserById);
 
-// api/users/:userId/friends/:freindId
+
+  // api/users/:userId/friends/:freindId
 router
   .route("/:userId/friends/:friendId")
   .post(postNewFriend)

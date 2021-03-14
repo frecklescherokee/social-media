@@ -17,4 +17,4 @@ mongoose.connect("mongodb://localhost/friends", {
 });
 
 
-app.listen(PORT, () => console.log(`😎 Connected on ${PORT}`));
+app.listen(PORT, () => console.log(` Connected on ${PORT}`));
